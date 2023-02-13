@@ -1,4 +1,5 @@
 FROM openjdk:17
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+COPY src /app
+RUN javac /app/spring-petclinic.java
+ENTRYPOINT ["java", "-cp", "/app", "spring-petclinic"]
+
